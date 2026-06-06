@@ -3,517 +3,271 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Three66 Espresso Bar | Lilli Pilli</title>
-  <meta name="description" content="Specialty coffee and fresh food with waterfront views of Mosquito Bay. Lilli Pilli NSW." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <title>South Coast Hospitality</title>
+  <meta name="description" content="Two exceptional venues on the NSW South Coast. Three66 Espresso Bar in Lilli Pilli and Crumb Cafe in Batehaven." />
+
   <style>
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('./fonts/montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
+      font-weight: 100 900;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('./fonts/montserrat/Montserrat-Italic-VariableFont_wght.ttf') format('truetype');
+      font-weight: 100 900;
+      font-style: italic;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg:         #090e0f;
-      --bg2:        #0f1819;
-      --bg3:        #162122;
-      --brand:      #bed8d5;
-      --brand2:     #8fbfbb;
-      --brand-warm: #b3d4c8;
-      --brand-cool: #b3ccd8;
-      --comp:       #d8b4b1;
-      --comp-light: #e8ccc9;
-      --cream:      #deecea;
-      --muted:      #5a7876;
-      --dim:        rgba(190,216,213,0.5);
-      --serif:      'Cormorant Garamond', Georgia, serif;
-      --sans:       'DM Sans', system-ui, sans-serif;
-      --banner-h:   48px;
-      --nav-h:      60px;
+      --bg: #090e0f;
+      --teal: #bed8d5;
+      --teal-dark: #7eb3af;
+      --salmon: #f8cac7;
+      --salmon-dark: #e8a8a4;
+      --cream: #f0ece6;
+      --muted: #4a5a59;
+      --serif: 'Montserrat', Georgia, serif;
+      --sans: 'Montserrat', system-ui, sans-serif;
     }
     html { scroll-behavior: smooth; }
-    body { font-family: var(--sans); background: var(--bg); color: var(--cream); line-height: 1.6; overflow-x: hidden; }
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--cream);
+      min-height: 100dvh;
+      overflow-x: hidden;
+      font-weight: 300;
+      letter-spacing: 0.3px;
+    }
     a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
+
     body::before {
-      content: ''; position: fixed; inset: 0; z-index: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.032'/%3E%3C/svg%3E");
+      content: '';
+      position: fixed; inset: 0; z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
       pointer-events: none;
     }
-    .order-banner { position: fixed; top: 0; left: 0; right: 0; z-index: 300; height: var(--banner-h); background: var(--brand); display: flex; align-items: center; justify-content: center; }
-    .order-banner a { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--bg); display: flex; align-items: center; gap: 0.6rem; width: 100%; height: 100%; justify-content: center; transition: opacity 0.2s; }
-    .order-banner a:hover { opacity: 0.75; }
-    .order-banner a::after { content: '→'; }
-    nav { position: fixed; top: var(--banner-h); left: 0; right: 0; z-index: 200; height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; background: rgba(9,14,15,0.40); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(190,216,213,0.10); transition: background 0.4s ease; }
-    nav.scrolled { background: rgba(9,14,15,0.82); }
-    .nav-back { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 0.4rem; min-width: 44px; min-height: 44px; transition: color 0.2s; }
-    .nav-back::before { content: '←'; font-size: 0.9rem; }
-    .nav-back:hover { color: var(--brand); }
-    .nav-logo { position: absolute; left: 50%; transform: translateX(-50%); }
-    .nav-logo img { height: 32px; width: auto; }
-    .nav-logo-text { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; letter-spacing: 0.14em; color: var(--cream); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { font-size: 0.63rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(190,216,213,0.6); transition: color 0.2s; padding: 0.5rem 0; }
-    .nav-links a:hover, .nav-links a.active { color: var(--brand); }
-    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; flex-direction: column; gap: 5px; }
-    .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--cream); border-radius: 2px; transition: all 0.3s; }
-    @media (max-width: 720px) { .nav-links { display: none; } .nav-hamburger { display: flex; } }
-    .nav-open .nav-links { display: flex; flex-direction: column; gap: 0; position: fixed; top: calc(var(--banner-h) + var(--nav-h)); left: 0; right: 0; background: rgba(9,14,15,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(190,216,213,0.08); padding: 0.5rem 0; z-index: 199; }
-    .nav-open .nav-links a { padding: 1rem 2rem; font-size: 0.85rem; border-bottom: 1px solid rgba(190,216,213,0.05); color: var(--muted); }
-    .nav-open .nav-hamburger span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-    .nav-open .nav-hamburger span:nth-child(2) { opacity: 0; }
-    .nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-    body { padding-top: calc(var(--banner-h) + var(--nav-h)); }
-    .hero { position: relative; height: calc(100dvh - var(--banner-h) - var(--nav-h)); min-height: 520px; display: flex; align-items: flex-end; overflow: hidden; }
-    .hero-img { position: absolute; top: -15%; left: 0; right: 0; bottom: -15%; background: url('view.JPG') center/cover no-repeat; background-color: var(--bg2); will-change: transform; }
-    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(165deg, rgba(9,14,15,0.15) 0%, rgba(9,14,15,0.0) 35%, rgba(9,14,15,0.55) 65%, rgba(9,14,15,0.97) 100%); }
-    .hero-overlay::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(to right, var(--brand), var(--brand-warm), var(--brand-cool)); }
-    .hero-content { position: relative; z-index: 2; padding: 0 2.5rem 3.5rem; width: 100%; animation: fade-up 1s 0.3s both; }
-    @keyframes fade-up { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
-    .hero-eyebrow { font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--brand); margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.8rem; }
-    .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: linear-gradient(to right, var(--brand), var(--brand-cool)); }
-    .hero-title { font-family: var(--serif); font-size: clamp(2.4rem, 8vw, 5.5rem); font-weight: 300; line-height: 1.0; color: #fff; margin-bottom: 1rem; letter-spacing: -0.01em; }
-    .hero-title em { font-style: italic; color: var(--brand); }
-    .hero-sub { font-size: 0.87rem; font-weight: 300; color: rgba(190,216,213,0.52); max-width: 400px; margin-bottom: 2rem; line-height: 1.8; }
-    .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-    .btn-primary { font-size: 0.67rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.9rem 1.75rem; background: var(--brand); color: var(--bg); border-radius: 1px; transition: background 0.25s; min-height: 48px; display: inline-flex; align-items: center; gap: 0.5rem; }
-    .btn-primary:hover { background: var(--brand-warm); }
-    .btn-ghost { font-size: 0.67rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.9rem 1.75rem; border: 1px solid rgba(190,216,213,0.28); color: var(--cream); border-radius: 1px; transition: all 0.25s; min-height: 48px; display: inline-flex; align-items: center; gap: 0.5rem; }
-    .btn-ghost:hover { border-color: var(--brand); color: var(--brand); }
-    .btn-comp { font-size: 0.67rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.9rem 1.75rem; border: 1px solid rgba(216,180,177,0.3); color: var(--comp-light); border-radius: 1px; transition: all 0.25s; min-height: 48px; display: inline-flex; align-items: center; gap: 0.5rem; }
-    .btn-comp:hover { border-color: var(--comp); color: var(--comp); }
-    .hero-scroll { position: absolute; bottom: 2.5rem; right: 2.5rem; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: rgba(190,216,213,0.35); font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; animation: fade-up 1s 1.2s both; }
-    .hero-scroll::after { content: ''; display: block; width: 1px; height: 44px; background: linear-gradient(to bottom, rgba(190,216,213,0.4), transparent); animation: pulse-line 2.2s ease-in-out infinite; }
-    @keyframes pulse-line { 0%,100% { transform: scaleY(1); opacity: 0.8; } 50% { transform: scaleY(0.35); opacity: 0.3; } }
-    @media (max-width: 480px) { .hero-scroll { display: none; } }
-    .info-strip { position: relative; z-index: 1; background: var(--bg2); border-bottom: 1px solid rgba(190,216,213,0.07); }
-    .info-strip-inner { max-width: 1100px; margin: 0 auto; padding: 1rem 2.5rem; display: flex; flex-wrap: wrap; gap: 0.6rem 2.5rem; align-items: center; }
-    .info-pill { display: flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; color: var(--muted); }
-    .info-pill strong { color: var(--cream); font-weight: 500; }
-    .info-pill a { color: var(--brand); }
-    .info-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--brand); opacity: 0.5; flex-shrink: 0; }
-    .section { position: relative; z-index: 1; padding: 5.5rem 2.5rem; max-width: 1100px; margin: 0 auto; }
-    @media (min-width: 768px) { .section { padding: 7rem 2.5rem; } }
-    .section-label { font-size: 0.57rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--brand); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem; }
-    .section-label::before { content: ''; display: block; width: 18px; height: 1px; background: linear-gradient(to right, var(--brand), var(--brand-cool)); }
-    .section-title { font-family: var(--serif); font-size: clamp(1.9rem, 5.5vw, 3.2rem); font-weight: 300; color: #fff; line-height: 1.05; letter-spacing: -0.01em; }
-    .section-title em { font-style: italic; color: var(--brand); }
-    .about-wrap { background: var(--bg); }
-    .about-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
-    @media (min-width: 800px) { .about-grid { grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; } }
-    .about-text .section-title { margin-bottom: 1.75rem; }
-    .about-text p { font-size: 0.9rem; font-weight: 300; color: var(--dim); line-height: 1.9; margin-bottom: 1rem; }
-    .about-text strong { color: var(--brand-warm); font-weight: 500; }
-    .about-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
-    .badge { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid rgba(190,216,213,0.18); color: var(--brand); padding: 0.35rem 0.85rem; border-radius: 1px; transition: border-color 0.2s, color 0.2s; }
-    .badge:hover { border-color: var(--brand); color: var(--brand-cool); }
-    .badge-comp { border-color: rgba(216,180,177,0.25); color: var(--comp-light); }
-    .about-img { aspect-ratio: 3/4; background: center/cover no-repeat var(--bg2); border-radius: 2px; position: relative; overflow: hidden; }
-    .about-img::after { content: ''; position: absolute; inset: 0; border: 1px solid rgba(190,216,213,0.1); border-radius: 2px; }
-    .parallax-band { position: relative; overflow: hidden; height: 340px; display: flex; align-items: center; justify-content: center; }
-    @media (max-width: 640px) { .parallax-band { height: 200px; } }
-    .parallax-band-img { position: absolute; top: -20%; left: 0; right: 0; bottom: -20%; background: url('view.JPG') center/cover no-repeat; will-change: transform; }
-    .parallax-band-overlay { position: absolute; inset: 0; background: rgba(9,14,15,0.68); }
-    .parallax-band-text { position: relative; z-index: 2; text-align: center; font-family: var(--serif); font-size: clamp(1.6rem, 5vw, 3rem); font-weight: 300; font-style: italic; color: rgba(190,216,213,0.65); letter-spacing: 0.04em; padding: 0 2rem; }
-    .menu-wrap { background: var(--bg2); border-top: 1px solid rgba(190,216,213,0.06); border-bottom: 1px solid rgba(190,216,213,0.06); }
-    .menu-pdf-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--comp-light); border: 1px solid rgba(216,180,177,0.25); padding: 0.5rem 1rem; border-radius: 1px; margin-top: 1rem; margin-bottom: 2rem; transition: all 0.2s; }
-    .menu-pdf-link:hover { border-color: var(--comp); color: var(--comp); }
-    .menu-pdf-link svg { width: 14px; height: 14px; flex-shrink: 0; }
-    .menu-pdf-link.hidden { display: none; }
-    .menu-tabs { display: flex; overflow-x: auto; border-bottom: 1px solid rgba(190,216,213,0.1); -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-    .menu-tabs::-webkit-scrollbar { display: none; }
-    .menu-tab { flex-shrink: 0; font-size: 0.63rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); padding: 0.9rem 1.3rem; background: none; border: none; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all 0.2s; }
-    .menu-tab:hover { color: var(--brand); }
-    .menu-tab.active { color: var(--brand); border-bottom-color: var(--brand); }
-    .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(190,216,213,0.06); margin-top: 2px; }
-    @media (min-width: 640px) { .menu-grid { grid-template-columns: repeat(3, 1fr); } }
-    @media (min-width: 1000px) { .menu-grid { grid-template-columns: repeat(4, 1fr); } }
-    .menu-item { background: var(--bg2); overflow: hidden; transition: background 0.2s; display: flex; flex-direction: column; }
-    .menu-item[hidden] { display: none; }
-    .menu-item:hover { background: var(--bg3); }
-    .menu-item-img { aspect-ratio: 1; background: center/cover no-repeat var(--bg); flex-shrink: 0; position: relative; overflow: hidden; }
-    .menu-item-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(9,14,15,0.4), transparent 50%); }
-    .menu-item-body { padding: 0.9rem 1rem 1.15rem; flex: 1; display: flex; flex-direction: column; }
-    .menu-item-cat { font-size: 0.53rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brand); margin-bottom: 0.25rem; opacity: 0.65; }
-    .menu-item-name { font-family: var(--serif); font-size: 1rem; font-weight: 400; color: #fff; margin-bottom: 0.25rem; line-height: 1.2; }
-    .menu-item-desc { font-size: 0.71rem; color: var(--muted); line-height: 1.5; flex: 1; }
-    .menu-cta { text-align: center; margin-top: 2.5rem; }
-    .reviews-wrap { background: var(--bg); }
-    .reviews-grid { display: grid; grid-template-columns: 1fr; gap: 1px; margin-top: 3rem; background: rgba(190,216,213,0.06); }
-    @media (min-width: 640px) { .reviews-grid { grid-template-columns: repeat(3,1fr); } }
-    .review-card { background: var(--bg); padding: 2rem; transition: background 0.2s; }
-    .review-card:hover { background: var(--bg2); }
-    .review-stars { color: var(--brand); font-size: 0.72rem; letter-spacing: 3px; margin-bottom: 1rem; }
-    .review-text { font-family: var(--serif); font-style: italic; font-size: 1.02rem; color: rgba(190,216,213,0.65); line-height: 1.8; margin-bottom: 1.25rem; }
-    .review-author { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brand); }
-    .review-source { font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.3rem; }
-    .instagram-wrap { background: var(--bg2); border-top: 1px solid rgba(190,216,213,0.06); }
-    .instagram-handle { font-size: 0.9rem; font-weight: 300; color: var(--muted); margin-top: 0.5rem; }
-    .instagram-handle a { color: var(--brand); transition: color 0.2s; }
-    .instagram-handle a:hover { color: var(--brand2); }
-    .ig-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
-    @media (max-width: 600px) { .ig-grid { grid-template-columns: repeat(2, 1fr); } }
-    .ig-post { aspect-ratio: 1; background: var(--bg3); border: 1px solid rgba(190,216,213,0.07); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; overflow: hidden; position: relative; transition: border-color 0.2s; }
-    .ig-post:hover { border-color: rgba(190,216,213,0.2); }
-    .ig-post blockquote, .ig-post iframe { width: 100% !important; min-width: unset !important; }
-    .ig-placeholder-icon { width: 28px; height: 28px; opacity: 0.2; }
-    .ig-placeholder-text { font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-align: center; padding: 0 1rem; }
-    .ig-follow { margin-top: 1.75rem; text-align: center; }
-    .find-wrap { background: var(--bg); border-top: 1px solid rgba(190,216,213,0.06); }
-    .find-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
-    @media (min-width: 800px) { .find-grid { grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; } }
-    .find-details { margin-top: 2rem; }
-    .find-row { display: grid; grid-template-columns: 90px 1fr; gap: 0.5rem 1.5rem; padding: 1rem 0; border-bottom: 1px solid rgba(190,216,213,0.07); align-items: start; }
-    .find-row:first-child { padding-top: 0; }
-    .find-label { font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brand); padding-top: 0.1rem; }
-    .find-val { font-size: 0.87rem; font-weight: 300; color: var(--cream); line-height: 1.7; }
-    .find-val a { color: var(--brand); transition: color 0.2s; }
-    .find-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 2rem; }
-    .find-map { aspect-ratio: 1; background: var(--bg2); border-radius: 2px; border: 1px solid rgba(190,216,213,0.08); overflow: hidden; }
-    .find-map iframe { width: 100%; height: 100%; border: none; display: block; filter: grayscale(0.6) invert(0.9) hue-rotate(165deg) brightness(0.85); }
-    footer { background: #040809; border-top: 1px solid rgba(190,216,213,0.06); padding: 2.5rem; }
-    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; align-items: center; text-align: center; }
-    @media (min-width: 640px) { .footer-inner { flex-direction: row; justify-content: space-between; text-align: left; } }
-    .footer-brand { font-family: var(--serif); font-size: 1rem; color: var(--muted); }
-    .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
-    .footer-links a { font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); transition: color 0.2s; }
-    .footer-links a:hover { color: var(--brand); }
-    .footer-copy { font-size: 0.6rem; color: rgba(90,120,118,0.35); width: 100%; text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.04); }
-    .mobile-nav { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 250; background: rgba(9,14,15,0.95); backdrop-filter: blur(18px); border-top: 1px solid rgba(190,216,213,0.08); padding: 0.4rem 0 calc(0.4rem + env(safe-area-inset-bottom)); }
-    @media (max-width: 720px) { .mobile-nav { display: block; } body { padding-bottom: calc(60px + env(safe-area-inset-bottom)); } }
-    .mobile-nav-inner { display: flex; justify-content: space-around; }
-    .mobile-nav a { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; padding: 0.4rem 0.6rem; font-size: 0.53rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); transition: color 0.2s; min-width: 52px; }
-    .mobile-nav a:hover { color: var(--brand); }
-    .mobile-nav a.order-btn { color: var(--bg); background: var(--brand); border-radius: 1px; padding: 0.5rem 1rem; align-self: center; font-weight: 500; }
-    .mobile-nav a svg { width: 19px; height: 19px; }
-    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.75s ease, transform 0.75s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.22s; }
-    @media (max-width: 480px) { .section { padding: 3.5rem 1.25rem; } .hero-content { padding: 0 1.25rem 2.5rem; } .info-strip-inner { padding: 0.85rem 1.25rem; } nav { padding: 0 1.25rem; } }
+
+    header {
+      position: relative; z-index: 10;
+      padding: 3rem 2rem 0;
+      text-align: center;
+    }
+    .group-eyebrow {
+      font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 1.5rem; font-weight: 500;
+    }
+    .group-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 400;
+      color: rgba(240,236,230,0.6);
+      letter-spacing: 0.08em;
+      margin-bottom: 4rem;
+    }
+
+    .venues {
+      position: relative; z-index: 10;
+      display: grid;
+      grid-template-columns: 1fr;
+      min-height: calc(100dvh - 12rem);
+    }
+    @media (min-width: 768px) {
+      .venues { grid-template-columns: 1fr 1fr; }
+    }
+
+    .venue-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 60dvh;
+      transition: flex 0.6s cubic-bezier(0.4,0,0.2,1);
+    }
+    @media (min-width: 768px) {
+      .venue-card { min-height: calc(100dvh - 12rem); }
+      .venue-card:hover { flex: 1.3; }
+    }
+
+    .venue-bg {
+      position: absolute; inset: 0;
+      background: center/cover no-repeat;
+      transform: scale(1.05);
+      transition: transform 0.8s cubic-bezier(0.4,0,0.2,1);
+    }
+    .venue-card:hover .venue-bg { transform: scale(1); }
+
+    .venue-card--teal .venue-bg { background-color: #1a2e2d; }
+    .venue-card--salmon .venue-bg { background-color: #2e1a1a; }
+
+    .venue-overlay {
+      position: absolute; inset: 0;
+      transition: opacity 0.5s;
+    }
+    .venue-card--teal .venue-overlay {
+      background: linear-gradient(to top, rgba(9,14,15,0.92) 0%, rgba(9,14,15,0.4) 50%, rgba(9,14,15,0.1) 100%);
+    }
+    .venue-card--salmon .venue-overlay {
+      background: linear-gradient(to top, rgba(20,10,10,0.92) 0%, rgba(20,10,10,0.4) 50%, rgba(20,10,10,0.1) 100%);
+    }
+    .venue-card:hover .venue-overlay { opacity: 0.8; }
+
+    .venue-bar {
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    }
+    .venue-card--teal .venue-bar { background: var(--teal); }
+    .venue-card--salmon .venue-bar { background: var(--salmon); }
+
+    .venue-content {
+      position: relative; z-index: 2;
+      padding: 2.5rem 2rem 2.5rem;
+    }
+    .venue-tag {
+      display: inline-block;
+      font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 1px;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .venue-card--teal .venue-tag { background: rgba(190,216,213,0.15); color: var(--teal); border: 1px solid rgba(190,216,213,0.25); }
+    .venue-card--salmon .venue-tag { background: rgba(248,202,199,0.15); color: var(--salmon); border: 1px solid rgba(248,202,199,0.25); }
+
+    .venue-name {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 7vw, 4rem);
+      font-weight: 700; line-height: 1;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .venue-name em { font-style: italic; font-weight: 600; }
+    .venue-card--teal .venue-name em { color: var(--teal); }
+    .venue-card--salmon .venue-name em { color: var(--salmon); }
+
+    .venue-sub {
+      font-size: 0.82rem; font-weight: 300;
+      color: rgba(240,236,230,0.5);
+      margin-bottom: 1.75rem;
+      line-height: 1.6;
+    }
+
+    .venue-meta {
+      display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .venue-meta-item {
+      font-size: 0.68rem; letter-spacing: 0.08em;
+      color: rgba(240,236,230,0.38);
+      font-weight: 400;
+    }
+    .venue-meta-item strong { color: rgba(240,236,230,0.65); font-weight: 600; }
+
+    .venue-cta {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.8rem 1.5rem;
+      border-radius: 1px;
+      transition: all 0.25s;
+    }
+    .venue-card--teal .venue-cta {
+      background: var(--teal); color: #090e0f;
+    }
+    .venue-card--teal .venue-cta:hover { background: var(--teal-dark); }
+    .venue-card--salmon .venue-cta {
+      background: var(--salmon); color: #140e0e;
+    }
+    .venue-card--salmon .venue-cta:hover { background: var(--salmon-dark); }
+
+    .venue-cta-arrow { font-size: 1rem; transition: transform 0.2s; }
+    .venue-card:hover .venue-cta-arrow { transform: translateX(3px); }
+
+    @media (min-width: 768px) {
+      .venues::after {
+        content: '';
+        position: absolute;
+        top: 0; bottom: 0;
+        left: 50%;
+        width: 1px;
+        background: rgba(240,236,230,0.06);
+        z-index: 20;
+      }
+    }
+
+    footer {
+      position: relative; z-index: 10;
+      text-align: center;
+      padding: 1.75rem 2rem;
+      border-top: 1px solid rgba(240,236,230,0.05);
+    }
+    footer p {
+      font-size: 0.62rem; letter-spacing: 0.12em;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    @media (max-width: 767px) {
+      header { padding: 2rem 1.25rem 0; }
+      .group-title { margin-bottom: 2.5rem; }
+      .venue-content { padding: 2rem 1.25rem 2rem; }
+    }
   </style>
 </head>
 <body>
 
-  <div class="order-banner">
-    <a href="https://three66.mobi-order.com/" target="_blank" rel="noopener">Order Pick-Up Now</a>
-  </div>
+  <header>
+    <p class="group-eyebrow">NSW South Coast · Est. 2020</p>
+    <h1 class="group-title">Two venues<br />One passion</h1>
+  </header>
 
-  <nav id="main-nav">
-    <a href="../index.html" class="nav-back">All Venues</a>
-    <div class="nav-logo">
-      <img src="logo.jpg" alt="Three66 Espresso Bar" onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
-      <span class="nav-logo-text" style="display:none">Three66</span>
-    </div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#reviews">Reviews</a></li>
-      <li><a href="#instagram">Instagram</a></li>
-      <li><a href="#visit">Visit</a></li>
-    </ul>
-    <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+  <div class="venues">
 
-  <div class="hero" id="hero">
-    <div class="hero-img" id="hero-parallax"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <p class="hero-eyebrow">Lilli Pilli NSW · Mosquito Bay</p>
-      <h1 class="hero-title">Three66<br /><em>Espresso Bar</em></h1>
-      <p class="hero-sub">Specialty coffee and fresh food served with unrivalled waterfront views of Mosquito Bay.</p>
-      <div class="hero-actions">
-        <a href="https://three66.mobi-order.com/" target="_blank" class="btn-primary">Order Pick-Up →</a>
-        <a href="#menu" class="btn-ghost">Explore Menu</a>
-        <!-- MENU PDF — remove "hidden" class from menu-pdf-link below and update href when ready -->
+    <!-- THREE66 -->
+    <a href="./three66/index.html" class="venue-card venue-card--teal">
+      <div class="venue-bar"></div>
+      <div class="venue-bg" style="background-image:url('./three66/three66-hero.jpg')"></div>
+      <div class="venue-overlay"></div>
+      <div class="venue-content">
+        <span class="venue-tag">Lilli Pilli · Mosquito Bay</span>
+        <h2 class="venue-name">Three66<br /><em>Espresso</em></h2>
+        <p class="venue-sub">Specialty coffee and fresh food<br />with waterfront views.</p>
+        <div class="venue-meta">
+          <span class="venue-meta-item"><strong>Wed – Sun</strong> 5 AM – 2 PM</span>
+          <span class="venue-meta-item">ONA Coffee · Licensed</span>
+        </div>
+        <span class="venue-cta">Visit Three66 <span class="venue-cta-arrow">→</span></span>
       </div>
-    </div>
-    <span class="hero-scroll">Scroll</span>
-  </div>
+    </a>
 
-  <div class="info-strip">
-    <div class="info-strip-inner">
-      <span class="info-pill"><span class="info-dot"></span><strong>Wed – Sun</strong>&nbsp;5:00 AM – 2:00 PM</span>
-      <span class="info-pill"><span class="info-dot"></span><strong>Phone</strong>&nbsp;<a href="tel:0244713947">(02) 4471 3947</a></span>
-      <span class="info-pill"><span class="info-dot"></span>Pet Friendly · Licensed · Waterfront</span>
-    </div>
-  </div>
-
-  <div class="about-wrap">
-    <section id="about" class="section">
-      <div class="about-grid">
-        <div class="about-text reveal">
-          <p class="section-label">The Vibe</p>
-          <h2 class="section-title">A Hidden Gem<br /><em>on the Bay</em></h2>
-          <p>At Three66, we blend premium café culture with the relaxed beauty of the NSW South Coast. We proudly serve specialty <strong>ONA Coffee</strong>, ensuring every cup is poured to absolute perfection.</p>
-          <p>Whether you're dropping by for your 5 AM caffeine hit, grabbing our famous bacon and egg roll, or enjoying a leisurely lunch on the deck — we have something for everyone.</p>
-          <div class="about-badges">
-            <span class="badge">ONA Coffee</span>
-            <span class="badge">Pet Friendly</span>
-            <span class="badge">Fully Licensed</span>
-            <span class="badge">Waterfront Views</span>
-            <span class="badge">Open from 5 AM</span>
-            <span class="badge badge-comp">Mosquito Bay</span>
-          </div>
+    <!-- CRUMB -->
+    <a href="./crumb/index.html" class="venue-card venue-card--salmon">
+      <div class="venue-bar"></div>
+      <div class="venue-bg" style="background-image:url('./crumb/crumb-hero.jpg')"></div>
+      <div class="venue-overlay"></div>
+      <div class="venue-content">
+        <span class="venue-tag">Batehaven</span>
+        <h2 class="venue-name">Crumb<br /><em>Cafe</em></h2>
+        <p class="venue-sub">Fresh baked goods, wholesome food<br />and great espresso. Open daily.</p>
+        <div class="venue-meta">
+          <span class="venue-meta-item"><strong>Open Daily</strong> 5 AM – 2 PM</span>
+          <span class="venue-meta-item">ONA Coffee · Fresh Baked</span>
         </div>
-        <div class="about-img reveal reveal-delay-2" style="background-image:url('view.JPG')"></div>
+        <span class="venue-cta">Visit Crumb <span class="venue-cta-arrow">→</span></span>
       </div>
-    </section>
-  </div>
+    </a>
 
-  <div class="parallax-band">
-    <div class="parallax-band-img" id="band-parallax" style="background-image:url('store-front.JPG')"></div>
-    <div class="parallax-band-overlay"></div>
-    <p class="parallax-band-text">"Where the bay meets your morning."</p>
-  </div>
-
-  <div class="menu-wrap">
-    <section id="menu" class="section">
-      <div class="menu-header reveal">
-        <p class="section-label">Taste the Coast</p>
-        <h2 class="section-title">Our Menu</h2>
-        <!--
-          MENU PDF BUTTON
-          1. Add your PDF file to the three66/ folder (e.g. menu.pdf)
-          2. Remove the "hidden" class from the line below
-          3. Update href if your filename is different
-        -->
-        <a href="menu.pdf" target="_blank" class="menu-pdf-link hidden">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          Download Full Menu PDF
-        </a>
-      </div>
-
-      <div class="menu-tabs" role="tablist">
-        <button class="menu-tab active" data-cat="all" role="tab" aria-selected="true">All</button>
-        <button class="menu-tab" data-cat="coffee" role="tab">Coffee</button>
-        <button class="menu-tab" data-cat="breakfast" role="tab">Breakfast</button>
-        <button class="menu-tab" data-cat="mains" role="tab">Mains</button>
-        <button class="menu-tab" data-cat="sweets" role="tab">Sweets</button>
-        <button class="menu-tab" data-cat="drinks" role="tab">Drinks</button>
-      </div>
-
-      <div class="menu-grid">
-        <div class="menu-item" data-cat="coffee">
-          <div class="menu-item-img" style="background-image:url('coffee.jpg')"></div>
-          <div class="menu-item-body"><span class="menu-item-cat">Coffee</span><h4 class="menu-item-name">ONA Espresso</h4><p class="menu-item-desc">Perfectly extracted and poured by our expert baristas.</p></div>
-        </div>
-        <div class="menu-item" data-cat="coffee">
-          <div class="menu-item-img" style="background-image:url('coffee.jpg')"></div>
-          <div class="menu-item-body"><span class="menu-item-cat">Coffee</span><h4 class="menu-item-name">Flat White</h4><p class="menu-item-desc">Silky microfoam over a rich double ristretto.</p></div>
-        </div>
-        <div class="menu-item" data-cat="breakfast">
-          <div class="menu-item-img" style="background-image:url('eggs-benny.JPG')"></div>
-          <div class="menu-item-body"><span class="menu-item-cat">Breakfast</span><h4 class="menu-item-name">Eggs Benedict</h4><p class="menu-item-desc">Fresh salmon and roasted cherry tomatoes on toasted English muffin.</p></div>
-        </div>
-        <div class="menu-item" data-cat="breakfast">
-          <div class="menu-item-img" style="background-image:url('sweet-corn-fritters.JPG')"></div>
-          <div class="menu-item-body"><span class="menu-item-cat">Breakfast</span><h4 class="menu-item-name">Sweet Corn Fritters</h4><p class="menu-item-desc">Crispy outside, fluffy inside. Choose bacon, salmon or halloumi.</p></div>
-        </div>
-        <div class="menu-item" data-cat="breakfast">
-          <div class="menu-item-img" style="background-image:url('beef-burger.JPG')"></div>
-          <div class="menu-item-body"><span class="menu-item-cat">Breakfast</span><h4 class="menu-item-name">Bacon &amp; Egg Roll</h4><p class="menu-item-desc">A local favourite. Crispy bacon, fried egg and your choice of sauce.</p></div>
-        </div>
-        <div class="menu-item" data-cat="mains">
-          <div class="menu-item-img" style="background-image:url('beef-burger.JPG')"></div>
-          <div class="menu-item-body"><span class="menu-item-cat">Mains</span><h4 class="menu-item-name">Best Beef Burger</h4><p class="menu-item-desc">Premium beef, fresh ingredients. A local legend.</p></div>
-        </div>
-        <div class="menu-item" data-cat="sweets">
-          <div class="menu-item-img" style="background-image:url('pancakes.JPG')"></div>
-          <div class="menu-item-body"><span class="menu-item-cat">Sweets</span><h4 class="menu-item-name">Fluffy Pancakes</h4><p class="menu-item-desc">Fresh seasonal toppings and rich syrup.</p></div>
-        </div>
-        <div class="menu-item" data-cat="sweets">
-          <div class="menu-item-img" style="background-image:url('pastry-cabinet.JPG')"></div>
-          <div class="menu-item-body"><span class="menu-item-cat">Sweets</span><h4 class="menu-item-name">Pastries &amp; Cheesecakes</h4><p class="menu-item-desc">Freshly baked daily. Ask about our cabinet specials.</p></div>
-        </div>
-        <div class="menu-item" data-cat="drinks">
-          <div class="menu-item-img" style="background-image:url('coffee.jpg')"></div>
-          <div class="menu-item-body"><span class="menu-item-cat">Drinks</span><h4 class="menu-item-name">Iced Drinks</h4><p class="menu-item-desc">Iced lattes, cold brew and seasonal sodas.</p></div>
-        </div>
-        <div class="menu-item" data-cat="drinks">
-          <div class="menu-item-img" style="background-image:url('coffee.jpg')"></div>
-          <div class="menu-item-body"><span class="menu-item-cat">Drinks</span><h4 class="menu-item-name">Fresh Juices</h4><p class="menu-item-desc">Made to order with seasonal local produce.</p></div>
-        </div>
-      </div>
-
-      <div class="menu-cta reveal">
-        <a href="https://three66.mobi-order.com/" target="_blank" class="btn-primary">View Full Menu &amp; Order Online →</a>
-      </div>
-    </section>
-  </div>
-
-  <div class="reviews-wrap">
-    <section id="reviews" class="section">
-      <p class="section-label reveal">Word on the Bay</p>
-      <h2 class="section-title reveal reveal-delay-1">What People Say</h2>
-      <div class="reviews-grid">
-        <div class="review-card reveal">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"Best eggs Benny with salmon &amp; roasted cherry tomatoes… Beautiful vibe and setting, coffee was excellent."</p>
-          <div class="review-author">— Bron</div>
-          <div class="review-source">Google Review</div>
-        </div>
-        <div class="review-card reveal reveal-delay-1">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"Hands down THE BEST BEEF BURGER I've ever had — and I've had thousands in my 60+ years. The staff were fantastic."</p>
-          <div class="review-author">— Brett S.</div>
-          <div class="review-source">Google Review</div>
-        </div>
-        <div class="review-card reveal reveal-delay-2">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"Wonderful experience. Warmly welcomed at every point. The food — omg! Highly recommend!!"</p>
-          <div class="review-author">— Catherine C.</div>
-          <div class="review-source">Google Review</div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <div class="instagram-wrap">
-    <section id="instagram" class="section">
-      <div class="instagram-header reveal">
-        <p class="section-label">On the Gram</p>
-        <h2 class="section-title">Latest Posts</h2>
-        <p class="instagram-handle">Follow us at <a href="https://www.instagram.com/three66espresso" target="_blank" rel="noopener">@three66espresso</a></p>
-      </div>
-      <!--
-      ═══════════════════════════════════════════════════════════
-      INSTAGRAM EMBEDS — HOW TO ADD YOUR POSTS:
-
-      OPTION A (Manual, free):
-        1. Open any post on instagram.com
-        2. Click ⋯ (three dots) → Embed → Copy embed code
-        3. Replace one of the <div class="ig-post"> placeholders below
-           with: <div class="ig-post">[paste embed code here]</div>
-        4. Repeat for each post. Up to 6 shown.
-        5. Uncomment the Instagram script tag at the bottom of this file.
-
-      OPTION B (Auto-updating, recommended):
-        Sign up at https://behold.so (free tier available).
-        Replace the entire .ig-grid div with their widget snippet.
-        Your feed will update automatically whenever you post.
-      ═══════════════════════════════════════════════════════════
-      -->
-      <div class="ig-grid reveal reveal-delay-1">
-        <div class="ig-post"><svg class="ig-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><p class="ig-placeholder-text">Add post</p></div>
-        <div class="ig-post"><svg class="ig-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><p class="ig-placeholder-text">Add post</p></div>
-        <div class="ig-post"><svg class="ig-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><p class="ig-placeholder-text">Add post</p></div>
-        <div class="ig-post"><svg class="ig-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><p class="ig-placeholder-text">Add post</p></div>
-        <div class="ig-post"><svg class="ig-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><p class="ig-placeholder-text">Add post</p></div>
-        <div class="ig-post"><svg class="ig-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><p class="ig-placeholder-text">Add post</p></div>
-      </div>
-      <div class="ig-follow reveal reveal-delay-2">
-        <a href="https://www.instagram.com/three66espresso" target="_blank" rel="noopener" class="btn-ghost">Follow @three66espresso on Instagram</a>
-      </div>
-    </section>
-  </div>
-
-  <div class="find-wrap">
-    <section id="visit" class="section">
-      <p class="section-label reveal">Find Us</p>
-      <div class="find-grid">
-        <div class="reveal">
-          <h2 class="section-title">THREE66<br /><em>Espresso Bar</em></h2>
-          <div class="find-details">
-            <div class="find-row"><span class="find-label">Address</span><span class="find-val">Shop 1 / 366 George Bass Dr<br />Lilli Pilli NSW 2536</span></div>
-            <div class="find-row"><span class="find-label">Phone</span><span class="find-val"><a href="tel:0244713947">(02) 4471 3947</a></span></div>
-            <div class="find-row"><span class="find-label">Hours</span><span class="find-val">Wednesday – Sunday<br />5:00 AM – 2:00 PM</span></div>
-            <div class="find-row"><span class="find-label">Instagram</span><span class="find-val"><a href="https://www.instagram.com/three66espresso" target="_blank">@three66espresso</a></span></div>
-          </div>
-          <div class="find-actions">
-            <a href="https://www.google.com/maps?q=Shop+1,+366+George+Bass+Dr,+Lilli+Pilli+NSW+2536&output=embed" target="_blank" class="btn-primary">Get Directions →</a>
-            <a href="https://www.instagram.com/three66espresso" target="_blank" class="btn-ghost">Instagram</a>
-          </div>
-        </div>
-        <div class="find-map reveal reveal-delay-2">
-          <iframe loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=Shop+1,+366+George+Bass+Dr,+Lilli+Pilli+NSW+2536&output=embed"></iframe>
-        </div>
-      </div>
-    </section>
   </div>
 
   <footer>
-    <div class="footer-inner">
-      <span class="footer-brand">Three66 Espresso Bar</span>
-      <div class="footer-links">
-        <a href="../index.html">← All Venues</a>
-        <a href="../crumb/index.html">Crumb Cafe</a>
-        <a href="https://three66.mobi-order.com/" target="_blank">Order Online</a>
-        <a href="https://www.instagram.com/three66espresso" target="_blank">Instagram</a>
-      </div>
-      <p class="footer-copy">© 2026 Three66 Espresso Bar. All rights reserved.</p>
-    </div>
+    <p>© 2026 South Coast Hospitality · All Rights Reserved</p>
   </footer>
 
-  <nav class="mobile-nav" aria-label="Quick navigation">
-    <div class="mobile-nav-inner">
-      <a href="#about"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>About</a>
-      <a href="#menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>Menu</a>
-      <a href="https://three66.mobi-order.com/" target="_blank" class="order-btn">Order →</a>
-      <a href="tel:0244713947"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.78 19.79 19.79 0 01.01 9 2 2 0 012 7.07l3-.13a2 2 0 011.72 1.41l.77 3.09a2 2 0 01-.45 1.79L5.5 14.5a16 16 0 006 6l1.27-1.54a2 2 0 011.79-.45l3.09.77A2 2 0 0122 21"/></svg>Call</a>
-      <a href="#visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Visit</a>
-    </div>
-  </nav>
-
-  <!-- Uncomment when Instagram embeds are added: -->
-  <!-- <script async src="//www.instagram.com/embed.js"></script> -->
-
-  <script>
-    const mainNav = document.getElementById('main-nav');
-    const hamburger = document.getElementById('hamburger');
-    hamburger.addEventListener('click', () => {
-      const open = mainNav.classList.toggle('nav-open');
-      hamburger.setAttribute('aria-expanded', open);
-    });
-    mainNav.querySelectorAll('.nav-links a').forEach(l => l.addEventListener('click', () => {
-      mainNav.classList.remove('nav-open');
-      hamburger.setAttribute('aria-expanded', 'false');
-    }));
-
-    window.addEventListener('scroll', () => {
-      mainNav.classList.toggle('scrolled', window.scrollY > 80);
-    }, { passive: true });
-
-    const heroP = document.getElementById('hero-parallax');
-    const bandP = document.getElementById('band-parallax');
-    const band = bandP ? bandP.closest('.parallax-band') : null;
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    if (!prefersReduced) {
-      window.addEventListener('scroll', () => {
-        const sy = window.scrollY;
-        if (heroP) heroP.style.transform = `translateY(${sy * 0.28}px)`;
-        if (bandP && band) {
-          const rect = band.getBoundingClientRect();
-          const offset = (rect.top + rect.height / 2 - window.innerHeight / 2);
-          bandP.style.transform = `translateY(${offset * 0.2}px)`;
-        }
-      }, { passive: true });
-    }
-
-    document.querySelectorAll('.menu-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.menu-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
-        tab.classList.add('active'); tab.setAttribute('aria-selected','true');
-        const cat = tab.dataset.cat;
-        document.querySelectorAll('.menu-item').forEach(item => {
-          item.toggleAttribute('hidden', cat !== 'all' && item.dataset.cat !== cat);
-        });
-      });
-    });
-
-    const revealObs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
-
-    const sections = document.querySelectorAll('section[id]');
-    window.addEventListener('scroll', () => {
-      let cur = '';
-      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 130) cur = s.id; });
-      document.querySelectorAll('.nav-links a').forEach(a => {
-        a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
-      });
-    }, { passive: true });
-  </script>
 </body>
 </html>
