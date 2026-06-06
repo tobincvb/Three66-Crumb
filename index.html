@@ -5,9 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>South Coast Hospitality</title>
   <meta name="description" content="Two exceptional venues on the NSW South Coast. Three66 Espresso Bar in Lilli Pilli and Crumb Cafe in Batehaven." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
   <style>
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('./fonts/montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
+      font-weight: 100 900;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('./fonts/montserrat/Montserrat-Italic-VariableFont_wght.ttf') format('truetype');
+      font-weight: 100 900;
+      font-style: italic;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --bg: #090e0f;
@@ -17,8 +29,8 @@
       --salmon-dark: #e8a8a4;
       --cream: #f0ece6;
       --muted: #4a5a59;
-      --serif: 'Cormorant Garamond', Georgia, serif;
-      --sans: 'DM Sans', system-ui, sans-serif;
+      --serif: 'Montserrat', Georgia, serif;
+      --sans: 'Montserrat', system-ui, sans-serif;
     }
     html { scroll-behavior: smooth; }
     body {
@@ -27,10 +39,11 @@
       color: var(--cream);
       min-height: 100dvh;
       overflow-x: hidden;
+      font-weight: 300;
+      letter-spacing: 0.3px;
     }
     a { color: inherit; text-decoration: none; }
 
-    /* GRAIN OVERLAY */
     body::before {
       content: '';
       position: fixed; inset: 0; z-index: 0;
@@ -38,7 +51,6 @@
       pointer-events: none;
     }
 
-    /* HEADER */
     header {
       position: relative; z-index: 10;
       padding: 3rem 2rem 0;
@@ -46,18 +58,17 @@
     }
     .group-eyebrow {
       font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 1.5rem;
+      color: var(--muted); margin-bottom: 1.5rem; font-weight: 500;
     }
     .group-title {
       font-family: var(--serif);
       font-size: clamp(1.8rem, 5vw, 2.8rem);
-      font-weight: 300;
-      color: rgba(240,236,230,0.5);
-      letter-spacing: 0.05em;
+      font-weight: 400;
+      color: rgba(240,236,230,0.6);
+      letter-spacing: 0.08em;
       margin-bottom: 4rem;
     }
 
-    /* VENUE CARDS */
     .venues {
       position: relative; z-index: 10;
       display: grid;
@@ -106,7 +117,6 @@
     }
     .venue-card:hover .venue-overlay { opacity: 0.8; }
 
-    /* Colour bar at top */
     .venue-bar {
       position: absolute; top: 0; left: 0; right: 0; height: 3px;
     }
@@ -123,7 +133,7 @@
       padding: 0.3rem 0.75rem;
       border-radius: 1px;
       margin-bottom: 1rem;
-      font-weight: 500;
+      font-weight: 600;
     }
     .venue-card--teal .venue-tag { background: rgba(190,216,213,0.15); color: var(--teal); border: 1px solid rgba(190,216,213,0.25); }
     .venue-card--salmon .venue-tag { background: rgba(248,202,199,0.15); color: var(--salmon); border: 1px solid rgba(248,202,199,0.25); }
@@ -131,12 +141,12 @@
     .venue-name {
       font-family: var(--serif);
       font-size: clamp(2.4rem, 7vw, 4rem);
-      font-weight: 300; line-height: 1;
+      font-weight: 700; line-height: 1;
       color: #fff;
       margin-bottom: 0.5rem;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.02em;
     }
-    .venue-name em { font-style: italic; }
+    .venue-name em { font-style: italic; font-weight: 600; }
     .venue-card--teal .venue-name em { color: var(--teal); }
     .venue-card--salmon .venue-name em { color: var(--salmon); }
 
@@ -154,12 +164,13 @@
     .venue-meta-item {
       font-size: 0.68rem; letter-spacing: 0.08em;
       color: rgba(240,236,230,0.38);
+      font-weight: 400;
     }
-    .venue-meta-item strong { color: rgba(240,236,230,0.65); font-weight: 500; }
+    .venue-meta-item strong { color: rgba(240,236,230,0.65); font-weight: 600; }
 
     .venue-cta {
       display: inline-flex; align-items: center; gap: 0.6rem;
-      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em;
       text-transform: uppercase;
       padding: 0.8rem 1.5rem;
       border-radius: 1px;
@@ -177,7 +188,6 @@
     .venue-cta-arrow { font-size: 1rem; transition: transform 0.2s; }
     .venue-card:hover .venue-cta-arrow { transform: translateX(3px); }
 
-    /* DIVIDER on desktop */
     @media (min-width: 768px) {
       .venues::after {
         content: '';
@@ -190,7 +200,6 @@
       }
     }
 
-    /* FOOTER */
     footer {
       position: relative; z-index: 10;
       text-align: center;
@@ -201,9 +210,9 @@
       font-size: 0.62rem; letter-spacing: 0.12em;
       color: var(--muted);
       text-transform: uppercase;
+      font-weight: 500;
     }
 
-    /* MOBILE tweaks */
     @media (max-width: 767px) {
       header { padding: 2rem 1.25rem 0; }
       .group-title { margin-bottom: 2.5rem; }
@@ -215,7 +224,7 @@
 
   <header>
     <p class="group-eyebrow">NSW South Coast · Est. 2020</p>
-    <h1 class="group-title">Two venues.<br />One passion.</h1>
+    <h1 class="group-title">Two venues<br />One passion</h1>
   </header>
 
   <div class="venues">
@@ -223,7 +232,7 @@
     <!-- THREE66 -->
     <a href="./three66/index.html" class="venue-card venue-card--teal">
       <div class="venue-bar"></div>
-      <div class="venue-bg" style="background-image:url('./three66/view.JPG')"></div>
+      <div class="venue-bg" style="background-image:url('./three66/three66-hero.jpg')"></div>
       <div class="venue-overlay"></div>
       <div class="venue-content">
         <span class="venue-tag">Lilli Pilli · Mosquito Bay</span>
@@ -240,7 +249,7 @@
     <!-- CRUMB -->
     <a href="./crumb/index.html" class="venue-card venue-card--salmon">
       <div class="venue-bar"></div>
-      <div class="venue-bg" style="background-image:url('./crumb/crumb-vibe.jpg')"></div>
+      <div class="venue-bg" style="background-image:url('./crumb/crumb-hero.jpg')"></div>
       <div class="venue-overlay"></div>
       <div class="venue-content">
         <span class="venue-tag">Batehaven</span>
